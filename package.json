@@ -7,7 +7,7 @@
   "scripts": {
     "build": "tsc",
     "start": "NODE_ENV=production node ./build/index.js",
-    "dev": "ts-node-dev --respawn --transpileOnly ./src/index.ts",
+    "dev": "ts-node-dev --respawn --transpileOnly ./src/app.ts",
     "lint": "tslint --project tsconfig.json",
     "prettier:base": "prettier --parser typescript --single-quote",
     "prettier:check": "yarn prettier:base  --list-different \"src/**/*.{ts,tsx}\"",
@@ -20,10 +20,12 @@
   },
   "devDependencies": {
     "@types/express": "^4.17.3",
+    "@types/mongoose": "^5.7.7",
     "@types/node": "^13.9.3",
     "husky": "^4.2.3",
     "prettier": "^2.0.2",
     "ts-node": "^8.8.1",
+    "ts-node-dev": "^1.0.0-pre.44",
     "tslint": "^6.1.0",
     "tslint-config-airbnb": "^5.11.2",
     "tslint-config-prettier": "^1.18.0",
@@ -31,6 +33,11 @@
   },
   "dependencies": {
     "body-parser": "^1.19.0",
-    "express": "^4.17.1"
+    "class-transformer": "^0.2.3",
+    "class-validator": "^0.12.0-rc.0",
+    "dotenv": "^8.2.0",
+    "envalid": "^6.0.1",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.6"
   }
 }
