@@ -1,12 +1,20 @@
 import { Server } from './server';
 import validateEnv from './utils/validateEnv';
-import postController from './services/posts/post.controller';
+import PostController from './services/posts/post.controller';
+import AuthenticationController from './authentication/authentication.controller';
 validateEnv();
 
-const server = new Server([new postController()]);
+const server = new Server([
+  new AuthenticationController(),
+  new PostController(),
+]);
 
 server.app.get('/', (req, res) => {
   res.send({ name: 'test' });
 });
 
-server.listen();
+server
+  .on('beforeListen', (arg) => {
+    console.log('before server runs.');
+  })
+  .listen();

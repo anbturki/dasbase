@@ -6,6 +6,9 @@ const postSchema = new mongoose.Schema({
   title: String,
 });
 
-const postModel = mongoose.model<post & mongoose.Document>('Post', postSchema);
+const postModel = mongoose.model<postInterface & mongoose.Document>(
+  'Post',
+  postSchema
+);
 
 export default postModel;

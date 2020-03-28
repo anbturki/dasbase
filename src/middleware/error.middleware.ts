@@ -12,6 +12,7 @@ export function clientError(
   response: Response,
   next: NextFunction
 ) {
+  console.log(error instanceof HTTPClientException);
   if (error instanceof HTTPClientException) {
     console.warn(error);
     response

@@ -1,5 +1,5 @@
 import { Router, Request, Response } from 'express';
-import postsModel from './posts.model';
+import postsModel from './post.model';
 import postInterface from './post.interface';
 import validationMiddleware from '../../middleware/validation.middleware';
 import createPostDto from './post.dto';
