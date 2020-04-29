@@ -10,9 +10,8 @@ export function clientError(
   error: Error,
   request: Request,
   response: Response,
-  next: NextFunction
+  next: NextFunction,
 ) {
-  console.log(error instanceof HTTPClientException);
   if (error instanceof HTTPClientException) {
     console.warn(error);
     response
@@ -27,7 +26,7 @@ export function serverError(
   error: Error,
   request: Request,
   response: Response,
-  next: NextFunction
+  next: NextFunction,
 ) {
   console.error(error);
   if (process.env.NODE_ENV === 'production') {
