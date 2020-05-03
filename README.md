@@ -1,11 +1,11 @@
-# DasBase a project starter for [Das Stack](http://dasstack)
+# Nodejs project starter for [Das Stack](http://dasstack)
 
 ## Supports
 
 - Typescript
-- Suport mongoose for NoSql/MongoDD and Typeorm for SQL/POSTGRE
+- Database: Mongoose for NoSql/MongoDD and Typeorm for SQL/POSTGRE
 - Authentication
-- Controllers
+- Modules Based System
 
 ## Installation
 
