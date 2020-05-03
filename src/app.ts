@@ -6,6 +6,8 @@ import { createServer, Server as HTTPServer } from 'http';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import 'reflect-metadata';
+import passport from 'passport';
+import jwtStrategy from './utils/jwtStrategy';
 import {
   clientError,
   serverError,
@@ -38,6 +40,7 @@ export class App extends EventEmitter {
   private async intialize() {
     this.app = express();
     this.httpServer = createServer(this.app);
+    this.initializePassportStrategies();
     this.initializeMiddlewares();
     await this.connectToDatabase();
     this.controllersHandler();
@@ -66,7 +69,11 @@ export class App extends EventEmitter {
 
   private controllersHandler(): void {
     (this.controllers || []).forEach((controller: IController) => {
-      this.app.use('/api', controller.router);
+      let prefix = '/api';
+      if (controller.disableApiPrefix) {
+        prefix = '/';
+      }
+      this.app.use(prefix, controller.router);
     });
   }
 
@@ -102,6 +109,10 @@ export class App extends EventEmitter {
       mongooseOptions.default,
     );
     console.log('mognoodb connected.');
+  }
+
+  private initializePassportStrategies(): void {
+    passport.use(jwtStrategy);
   }
 
   /**
